@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BacFitGym.Dominio\BacFitGym.Dominio.csproj" />
+    <ProjectReference Include="..\BacFitGym.PersistenciaDatos\BacFitGym.PersistenciaDatos.csproj" />
+    <ProjectReference Include="..\BacFitGym.Transversal\BacFitGym.Transversal.csproj" />
+  </ItemGroup>
+
+</Project>
