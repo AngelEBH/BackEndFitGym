@@ -51,6 +51,14 @@ namespace BacFitGym
 
             app.UseAuthorization();
 
+            app.UseCors(builder =>
+            {
+                // builder.WithOrigins(Configuration["ApplicationSettings:Client_URL"].ToString());
+                builder.AllowAnyOrigin();
+                builder.AllowAnyMethod();
+                builder.AllowAnyHeader();
+            });
+
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
