@@ -2,14 +2,16 @@
 using BacFitGym.FuenteDatos.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BacFitGym.FuenteDatos.Migrations
 {
     [DbContext(typeof(FitGymDb))]
-    partial class FitGymDbModelSnapshot : ModelSnapshot
+    [Migration("20201113230337_CreacionBD")]
+    partial class CreacionBD
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
