@@ -18,10 +18,18 @@ namespace BacFitGym.Dominio.Models
 
         [Required(ErrorMessage = "This field is required")]
         [DataType(DataType.EmailAddress, ErrorMessage = "E-mail is not valid")]
-        public string CorreoElectronico { get; set; }
+        public string CorreoElectronico { get; set; } 
 
         [Required(ErrorMessage = "This field is required")]
-        [StringLength(25, MinimumLength = 8, ErrorMessage = "Only accepts 8 or 25 characters")]
+        [StringLength(200 ,MinimumLength = 8, ErrorMessage = "Only accepts 8 or 25 characters")]
         public string Password { get; set; }
+        // public int Id_Gimnasio { get; set; }
+        public int RolesId { get; set; }
+        public Roles Roles { get; set; }
+        public List<Gimnasios> gimnasios { get; set; }
+        public List<Afiliados> afiliados { get; set; }
+
+
+
     }
 }

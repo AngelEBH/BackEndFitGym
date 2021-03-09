@@ -11,6 +11,7 @@ namespace BacFitGym.Logica.Login
     public interface ILoginLogica
     {
         Task<Request<bool>> PostUsuario(Usuario usuario);
+        Task<Request<bool>> CrearAdministrador(Usuario usuario);
         Task<Request<bool>> PostAuthUser(UsuarioDTO usuario);
     }
 }
