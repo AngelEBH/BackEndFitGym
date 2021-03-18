@@ -1,15 +1,18 @@
 ﻿using BacFitGym.Dominio.DTO;
 using BacFitGym.Dominio.Models;
+using BacFitGym.FuenteDatos.Context;
 using BacFitGym.PersistenciaDatos.Repository;
 using BacFitGym.Transversal.Request;
-using Microsoft.AspNetCore.DataProtection;
 using System;
 using System.Collections.Generic;
-using System.Linq.Expressions;
-using System.Net;
-using System.Text;
+using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.DataProtection;
+using System.Net;
+using System.Linq.Expressions;
 
 namespace BacFitGym.Logica.Login
 {
@@ -17,9 +20,11 @@ namespace BacFitGym.Logica.Login
     {
         private readonly IDataProtector _protector;
         private readonly IRepository _repository;
-        
-        public LoginLogica(IRepository repository, IDataProtectionProvider protectionProvider)
+        private readonly FitGymDb _context;
+       
+        public LoginLogica(IRepository repository, IDataProtectionProvider protectionProvider, FitGymDb context)
         {
+            _context = context;
             _repository = repository;
             _protector = protectionProvider.CreateProtector("Valor_unico");
         }
@@ -114,6 +119,18 @@ namespace BacFitGym.Logica.Login
 
                 return _request;
             }
+
+
         }
+
+        public async Task<ActionResult<Usuario>> GetInfoUsuarioPersona(Usuario user)
+        {
+
+            var user1 = await _context.Usuarios.Where(x => x.UserName == user.UserName && x.CorreoElectronico == user.CorreoElectronico).ToListAsync();
+            return user;
+            
+        }
+
+       
     }
 }

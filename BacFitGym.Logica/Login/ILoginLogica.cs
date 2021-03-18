@@ -1,6 +1,7 @@
 ﻿using BacFitGym.Dominio.DTO;
 using BacFitGym.Dominio.Models;
 using BacFitGym.Transversal.Request;
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -13,5 +14,6 @@ namespace BacFitGym.Logica.Login
         Task<Request<bool>> PostUsuario(Usuario usuario);
         Task<Request<bool>> CrearAdministrador(Usuario usuario);
         Task<Request<bool>> PostAuthUser(UsuarioDTO usuario);
+        Task<ActionResult<Usuario>> GetInfoUsuarioPersona(Usuario user );
     }
 }
