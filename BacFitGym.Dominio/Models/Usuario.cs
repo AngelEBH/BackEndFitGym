@@ -27,7 +27,7 @@ namespace BacFitGym.Dominio.Models
         public int RolesId { get; set; }
         public Roles Roles { get; set; }
         public List<Gimnasios> gimnasios { get; set; }
-        public List<Afiliados> afiliados { get; set; }
+        public List<Afiliados> afiliados { get; set; } 
 
 
 

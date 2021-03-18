@@ -114,7 +114,7 @@ namespace BacFitGym.Logica.Login.Gimnasio
             {
                 _request.Codigo = HttpStatusCode.InternalServerError;
                 _request.Entity = false;
-                _request.Mensaje = "Hay un error en el servidor o la red.";
+                _request.Mensaje = "Hay un error en el servidor o la re.";
                 _request.Exception = ex.Message;
 
                 return _request;
