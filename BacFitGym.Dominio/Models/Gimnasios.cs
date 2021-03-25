@@ -21,8 +21,8 @@ namespace BacFitGym.Dominio.Models
         [Required(ErrorMessage = "This field is required")]
         public string Descripcion { get; set; }
        //  [Required(ErrorMessage = "This field is required")]
-        public byte[] logo { get; set; }
-        public byte[] InformacionDetalle { get; set; }
+        public string logo { get; set; }
+        public string InformacionDetalle { get; set; }
         public string Dueño { get; set; }
         public string slogan { get; set; }
 

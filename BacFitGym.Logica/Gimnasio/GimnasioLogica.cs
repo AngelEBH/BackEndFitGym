@@ -19,31 +19,7 @@ namespace BacFitGym.Logica.Login.Gimnasio
             
         }
 
-        public async Task<Request<bool>> PostUsuario(Usuario usuario)
-        {
-            
-
-            var _request = new Request<bool>();
-            try
-            {
-                await _repository.Post(usuario);
-
-                _request.Codigo = HttpStatusCode.OK;
-                _request.Entity = true;
-                _request.Mensaje = "Se envio la información con éxito.";
-
-                return _request;
-            }
-            catch (Exception ex)
-            {
-                _request.Codigo = HttpStatusCode.InternalServerError;
-                _request.Entity = false;
-                _request.Mensaje = "Hay un error en el servidor o la red.";
-                _request.Exception = ex.Message;
-
-                return _request;
-            }
-        }
+   
         public async Task<Request<bool>> CrearGimnasio(Gimnasios gimnasio)
         {
 

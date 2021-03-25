@@ -44,25 +44,28 @@ namespace BacFitGym.Controllers
         [HttpPost("UserCliente")]
         public async Task<Request<bool>> CrearCLiente(Usuario user)
         {
-            user.RolesId = 2;
-            string cifrado = _protector.Protect(user.Password);
-            user.Password = cifrado;
-            //string desincriptar = _protector.Unprotect(cifrado);
+            user.RolesId = 2;         
+            string cifrado2 = Encrypter.Encrypt(user.Password);
+            user.Password = cifrado2;
+             
             return await _logica.PostUsuario(user);
         }
         [HttpPost("CrearAdministrador")]
         public async Task<Request<bool>> CrearAdministrador(Usuario user)
         {
             user.RolesId = 1;
+            string cifrado2 = Encrypter.Encrypt(user.Password);
+            user.Password = cifrado2;
             return await _logica.CrearAdministrador(user);
         }
 
-        [HttpPost("GetInfoUsuarioPersona/{username}/{email}")]
-        public async Task<ActionResult<Usuario>> GetInfoUsuarioPersona(Usuario user)
+        [HttpGet("GetInfoUsuarioPersona/{UserName}/{CorreoElectronico}")]
+        public async Task<ActionResult> GetInfoUsuarioPersona(string UserName, string CorreoElectronico)
         {
-            return await _logica.GetInfoUsuarioPersona(user);
-          
-             
+            var user = await _context.Usuarios.Where(x => x.UserName == UserName && x.CorreoElectronico == CorreoElectronico).ToListAsync();
+            return Ok(user);
+
+
         }
 
         [HttpPost("AuthUser")]

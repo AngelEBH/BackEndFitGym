@@ -123,14 +123,18 @@ namespace BacFitGym.Logica.Login
 
         }
 
-        public async Task<ActionResult<Usuario>> GetInfoUsuarioPersona(Usuario user)
-        {
+        //public async Task<ActionResult> GetInfoUsuarioPersona(string username, string email)
+        //{
 
-            var user1 = await _context.Usuarios.Where(x => x.UserName == user.UserName && x.CorreoElectronico == user.CorreoElectronico).ToListAsync();
-            return user;
             
-        }
+            
+        //}
 
-       
+     
+
+        public Task<ActionResult<Usuario>> GetInfoUsuarioPersona(Usuario user)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
