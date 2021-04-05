@@ -71,14 +71,13 @@ namespace BacFitGym.Controllers
         [HttpPost("AuthUser")]
         public async Task<Request<bool>> PostAuthUser(UsuarioDTO user)
         {
-            //string desincriptar = _protector.Unprotect(cifrado);
+            
             return await _logica.PostAuthUser(user);
         }
         [HttpPost("UserLogin")]
         public async Task<ActionResult<Usuario>> PostLogin(UsuarioDTO user)
         {
-            var passencrypted = Encrypter.Encrypt(user.Password);
-           // string desincriptar = _protector.Unprotect(user.Password);
+            var passencrypted = Encrypter.Encrypt(user.Password);         
             var User = await _context.Usuarios.FirstOrDefaultAsync(x => x.CorreoElectronico == user.UserName && x.Password == passencrypted || 
             x.UserName == user.UserName && x.Password == passencrypted);
 

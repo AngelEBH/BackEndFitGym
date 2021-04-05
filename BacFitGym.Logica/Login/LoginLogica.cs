@@ -32,7 +32,7 @@ namespace BacFitGym.Logica.Login
       
         public async Task<Request<bool>> PostUsuario(Usuario usuario)
         {
-            //Encriptar(usuario.Password);
+           
 
             var _request = new Request<bool>();
             try
@@ -58,7 +58,7 @@ namespace BacFitGym.Logica.Login
 
         public async Task<Request<bool>> CrearAdministrador(Usuario usuario)
         {
-            //Encriptar(usuario.Password);
+            
 
             var _request = new Request<bool>();
             try
@@ -123,12 +123,7 @@ namespace BacFitGym.Logica.Login
 
         }
 
-        //public async Task<ActionResult> GetInfoUsuarioPersona(string username, string email)
-        //{
-
-            
-            
-        //}
+    
 
      
 

@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using BacFitGym.Dominio.Models;
 using BacFitGym.FuenteDatos.Context;
+using BacFitGym.Logica.AfiliafoCliente;
 using BacFitGym.Logica.Login;
+using BacFitGym.Logica.Login.Gimnasio;
 using BacFitGym.PersistenciaDatos.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,6 +37,8 @@ namespace BacFitGym
             services.AddDataProtection();
             services.AddScoped<IRepository, Repository<FitGymDb>>();
             services.AddScoped<ILoginLogica, LoginLogica>();
+            services.AddScoped<IGimnasioLogica, GimnasioLogica>();
+            services.AddScoped<IAfiliadoLogica, AfiliadoLogica>();
 
             services.AddDbContext<FitGymDb>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("SqlServer")));

@@ -1,5 +1,6 @@
 ﻿using BacFitGym.Dominio.Models;
 using BacFitGym.Transversal.Request;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace BacFitGym.Logica.Login.Gimnasio
@@ -10,5 +11,6 @@ namespace BacFitGym.Logica.Login.Gimnasio
         Task<Request<bool>> CrearRutinas(Rutinas rutinas);
         Task<Request<bool>> CrearEntrenador(Entrenadores entrenadores);
         Task<Request<bool>> CrearPrecio(Precios precios);
+        Task<IEnumerable<Afiliados>> GetInfoAfiliadoById(int id);
     }
 }
