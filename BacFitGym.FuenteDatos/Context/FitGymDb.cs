@@ -19,6 +19,7 @@ namespace BacFitGym.FuenteDatos.Context
         public DbSet<AfiliadoRutinas> AfiliadoRutinas { get; set; }
         public DbSet<Entrenadores> Entrenadores { get; set; }
         public DbSet<Precios> Precios { get; set; }
+        public DbSet<Pagos> Pagos { get; set; }
 
 
 

@@ -33,5 +33,7 @@ namespace BacFitGym.Dominio.Models
         public List<RutinasGimnasios> RutinasGimnasios { get; set; }
         public List<Entrenadores> Entrenadores { get; set; }
         public List<Precios> Precios{ get; set; }
+        public List<Pagos> Pagos { get; set; }
+        public List<TipoRutinas> tipoRutinas { get; set; }
     }
 }

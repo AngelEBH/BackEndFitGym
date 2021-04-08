@@ -26,6 +26,7 @@ namespace BacFitGym.Dominio.Models
         public Usuario Usuarios { get; set; }
         public Gimnasios Gimnasios { get; set; }
         public Entrenadores Entrenadores { get; set; }
+        public List<Pagos> Pagos{ get; set; }
         public List<AfiliadoRutinas> AfiliadoRutinas { get; set; }
     }
 }

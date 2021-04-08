@@ -4,14 +4,16 @@ using BacFitGym.FuenteDatos.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace BacFitGym.FuenteDatos.Migrations
 {
     [DbContext(typeof(FitGymDb))]
-    partial class FitGymDbModelSnapshot : ModelSnapshot
+    [Migration("20210405002711_db2")]
+    partial class db2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -275,7 +277,7 @@ namespace BacFitGym.FuenteDatos.Migrations
                     b.Property<byte[]>("Imagen")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<string>("Instruccion")
+                    b.Property<string>("Instrupcion")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -332,18 +334,7 @@ namespace BacFitGym.FuenteDatos.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("Id_Gimnasio")
-                        .HasColumnType("int");
-
-                    b.Property<string>("Logo")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int?>("gimnasiosId_Gimnasio")
-                        .HasColumnType("int");
-
                     b.HasKey("Id_TipoRutina");
-
-                    b.HasIndex("gimnasiosId_Gimnasio");
 
                     b.ToTable("TipoRutinas");
                 });
@@ -453,13 +444,6 @@ namespace BacFitGym.FuenteDatos.Migrations
                     b.HasOne("BacFitGym.Dominio.Models.Rutinas", "Rutinas")
                         .WithMany("rutinasGimnasios")
                         .HasForeignKey("RutinasId_Rutina");
-                });
-
-            modelBuilder.Entity("BacFitGym.Dominio.Models.TipoRutinas", b =>
-                {
-                    b.HasOne("BacFitGym.Dominio.Models.Gimnasios", "gimnasios")
-                        .WithMany("tipoRutinas")
-                        .HasForeignKey("gimnasiosId_Gimnasio");
                 });
 
             modelBuilder.Entity("BacFitGym.Dominio.Models.Usuario", b =>

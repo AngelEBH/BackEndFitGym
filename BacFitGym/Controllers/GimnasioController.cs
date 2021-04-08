@@ -46,6 +46,13 @@ namespace BacFitGym.Controllers
             return await _LogicaAf.CrearRutinas(rutinas);
         }
 
+        [HttpPost("CrearTipoRutina")]
+        public async Task<Request<bool>> CrearARutina(TipoRutinas tipoRutinas)
+        {
+
+            return await _GimnLogica.CrearTipoRutinas(tipoRutinas);
+        }
+
         [HttpPost("CrearGimnasios")]
         public async Task<Request<bool>> CrearGimnasios(Gimnasios gimnasios)
         {
@@ -104,7 +111,64 @@ namespace BacFitGym.Controllers
     public async Task<IEnumerable<Afiliados>> GetInfoAfiliadoById(int id)
      {           
             return await _GimnLogica.GetInfoAfiliadoById(id);
+     }
+
+    [HttpGet("GetTipoRutina/{id}")]
+     public async Task<IEnumerable<TipoRutinas>> GetTipoRutina(int id)
+      {
+            return await _GimnLogica.GetRutina(id);
+           
       }
 
-}
+      [HttpGet("GetDetalleRutina/{id}")]
+      public async Task<IEnumerable<Rutinas>> GetDetalleRutina(int id)
+       {
+          return await _GimnLogica.GetDetalleRutina(id);
+
+      }
+
+        [HttpDelete("DeleteTipoRutina/{id}")]
+     public async Task<ActionResult> DeletetTipoRutina(int id)
+        {
+            var rutina = _context.TipoRutinas.Where(x => x.Id_TipoRutina == id).FirstOrDefault();
+
+            _context.TipoRutinas.Remove(rutina);
+            await _context.SaveChangesAsync();
+
+            return Ok(rutina);
+
+        }
+
+
+        [HttpPut("UpdateTipoRutina/{id}")]
+     public async Task<ActionResult<TipoRutinas>> UpdateTipoRutia(int id, TipoRutinas tipoRutinas)
+     {
+            var item = await _context.TipoRutinas.FirstOrDefaultAsync(x => x.Id_TipoRutina == id);
+
+            var validar = item == null;
+            if (validar)
+            {
+                return NotFound();
+            }
+
+            item.Descripcion = tipoRutinas.Descripcion;
+            item.Logo = tipoRutinas.Logo;
+            item.Id_Gimnasio = tipoRutinas.Id_Gimnasio;
+            item.Id_TipoRutina = id;
+
+            await _context.SaveChangesAsync();
+
+
+            return Ok(new
+                {
+                    Id_TipoRutina = item.Id_TipoRutina,
+                    Descripcion = item.Descripcion,
+                    Logo = item.Logo,
+                    Id_Gimnasio = item.Id_Gimnasio
+                });
+       
+        }
+
+
+    }
 }

@@ -23,6 +23,17 @@ namespace BacFitGym.PersistenciaDatos.Repository
             await _context.SaveChangesAsync();
         }
 
+        public async Task UpdateAsync<T>(T t, T y) where T : class
+        {
+            _context.Entry(y).CurrentValues.SetValues(t);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task DeleteAsync<T>(T entity) where T : class
+        {
+            _context.Set<T>().Remove(entity);
+            await _context.SaveChangesAsync();
+        }
         public async Task<ActionResult<IEnumerable<T>>> GetAll<T>() where T : class
         {
             return await _context.Set<T>().ToListAsync();

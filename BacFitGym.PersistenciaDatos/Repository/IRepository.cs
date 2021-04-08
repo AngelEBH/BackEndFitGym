@@ -12,5 +12,7 @@ namespace BacFitGym.PersistenciaDatos.Repository
         Task Post<T>(T entity) where T : class;
         Task<ActionResult<IEnumerable<T>>> GetAll<T>() where T : class;
         Task<T> GetById<T>(Expression<Func<T, bool>> t) where T : class;
+        Task UpdateAsync<T>(T entity, T y) where T : class;
+        Task DeleteAsync<T>(T entity) where T : class;
     }
 }

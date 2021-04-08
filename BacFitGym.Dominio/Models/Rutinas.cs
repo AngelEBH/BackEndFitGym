@@ -15,9 +15,9 @@ namespace BacFitGym.Dominio.Models
         public string Descripcion { get; set; }
         [Required(ErrorMessage = "This field is required")]
         public string Nombre { get; set; }
-        public byte[] Imagen { get; set; }
+        public string Imagen { get; set; }
         [Required(ErrorMessage = "This field is required")]
-        public string Instrupcion  { get; set; }
+        public string Instruccion  { get; set; }
         public int Id_TipoRutina { get; set; }
         public TipoRutinas TipoRutinas { get; set; }
         public List<RutinasGimnasios> rutinasGimnasios { get; set; }
